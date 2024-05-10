@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="left-section"></div>
+  <div class="right-section">
+    <div class="login-container">
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+        <h2 class="login-title"><mat-icon aria-hidden="false" aria-label="add_person-icon" fontIcon="person_add" class="icon"></mat-icon> Registration</h2>
+
+        <mat-form-field class="form-control">
+          <mat-label>Email:</mat-label>
+          <input matInput type="text" id="username" formControlName="email" required/>
+        </mat-form-field>
+
+        <mat-form-field class="form-control">
+          <mat-label>Password:</mat-label>
+          <input matInput type="text" id="password" formControlName="password" required/>
+        </mat-form-field>
+
+        <mat-form-field class="form-control">
+          <mat-label>Username:</mat-label>
+          <input matInput type="text" id="first_name" formControlName="username" required/>
+        </mat-form-field>
+
+
+        <button mat-button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>

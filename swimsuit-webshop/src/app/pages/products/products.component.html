@@ -1,0 +1,71 @@
+<div *ngIf="!loadingImages" class="loading-indicator">
+  <mat-spinner></mat-spinner>
+</div>
+
+<!-- ***** Products Area Starts ***** -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-lg-8 col-md-6 col-sm-6">
+        <div class="section-heading">
+          <div>
+            <h2>Our Latest Products</h2>
+            <span>Check out all of our products.</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-2 align-self-center pt-0 pt-md-4 pb-2 pb-sm-0">
+        <button mat-fab color="accent" aria-label="add_icon" (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6 centered-div pb-3">
+          <mat-button-toggle-group (change)="onValChangeSex($event.value)">
+            <mat-button-toggle value="man" aria-label="man">Men's</mat-button-toggle>
+            <mat-button-toggle value="woman" aria-label="woman">Women's</mat-button-toggle>
+            <mat-button-toggle value="all" aria-label="all">All Products</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="container pt-4 pt-sm-0" *ngIf="loadingImages">
+    <div class="row">
+
+      <div class="col-lg-4 card-holder" *ngFor="let product of productList">
+        <mat-card class="item">
+          <div class="thumb">
+            <img mat-card-image [src]="product.image" class="card-image" alt="product-image">
+          </div>
+          <mat-card-content class="down-content">
+            <h4>{{ product.product_name }}</h4>
+            <div class="row">
+              <div class="col-8">
+
+                <p>Price: <span>$ {{ product.price }}</span></p>
+                <p>Created: <span>{{ product.created_at | dateFormat }}</span></p>
+              </div>
+              <div class="col-4">
+                <button mat-icon-button color="primary" aria-label="edit-icon" (click)="onEdit(product)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" aria-label="delete-icon" (click)="onDelete(product.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+<!-- ***** Products Area Ends ***** -->

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="left-section">
+<!--    <img  src="assets/pictures/logo-color.png" alt="logo-color-image">-->
+  </div>
+  <div class="right-section">
+    <div class="login-container">
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+        <h2 class="login-title"><mat-icon aria-hidden="false" aria-label="person-icon" fontIcon="account_circle" class="icon"></mat-icon> Login</h2>
+
+        <mat-form-field class="form-control">
+          <mat-label><mat-icon aria-hidden="false" aria-label="person-icon" fontIcon="person" class="icon"></mat-icon>E-mail</mat-label>
+          <input matInput type="text" id="email" formControlName="email" required>
+        </mat-form-field>
+
+        <mat-form-field class="form-control">
+          <mat-label><mat-icon aria-hidden="false" aria-label="password-icon" fontIcon="lock" class="icon"></mat-icon>Password</mat-label>
+          <input matInput type="password" id="password" formControlName="password" required>
+        </mat-form-field>
+
+        <button mat-button type="submit">Sign In</button>
+      </form>
+    </div>
+  </div>
+</div>

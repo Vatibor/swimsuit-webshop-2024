@@ -1,0 +1,56 @@
+<div class="container">
+
+  <div class="right-section">
+    <div class="login-container">
+
+
+      <form [formGroup]="form" class="login-form">
+
+        @if (form.getRawValue().id == '') {
+          <h2 class="login-title">
+            <mat-icon aria-hidden="false" aria-label="add_circle_icon" fontIcon="add_circle" class="icon"></mat-icon>
+            Upload new product
+          </h2>
+        }
+
+        @if (form.getRawValue().id != '') {
+          <h2 class="login-title">
+            <mat-icon aria-hidden="false" aria-label="add_circle_icon" fontIcon="edit" class="icon"></mat-icon>
+            Update product
+          </h2>
+        }
+        <mat-form-field class="form-control">
+          <mat-label>Product Name:</mat-label>
+          <input matInput type="text" id="product_name" name="product_name" formControlName="product_name" required/>
+        </mat-form-field>
+
+        <mat-form-field class="form-control">
+          <mat-label>Price:</mat-label>
+          <input matInput type="number" id="price" formControlName="price" required/>
+        </mat-form-field>
+
+        <h3>Sex:</h3>
+        <mat-button-toggle-group name="Sex" aria-label="Sex" formControlName="sex" required>
+          <mat-button-toggle value="man" id="man">Man</mat-button-toggle>
+          <mat-button-toggle value="woman" id="woman">Woman</mat-button-toggle>
+        </mat-button-toggle-group>
+
+
+
+        @if (form.getRawValue().id == '') {
+          <h3>Upload a picture</h3>
+          <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+          <input hidden (change)="onFileSelected($event)" #fileInput type="file" required>
+          <span class="file-name">{{ selectedFile?.name }}</span>
+
+          <button mat-button type="submit" (click)="onSubmit()" mat-dialog-close>Create product</button>
+        }
+
+        <button mat-button type="submit" *ngIf="form.getRawValue().id != ''" (click)="updateProduct()" mat-dialog-close>Update product
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+

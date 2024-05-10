@@ -1,0 +1,54 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <app-menu
+      [loggedInUser]="loggedInUser"
+      (onLogout)="logout($event)"
+      (onCloseSidenav)="onClose($event, sidenav)"
+    ></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+<!--    <app-menu></app-menu>-->
+
+    <header class="header-area header-sticky">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <mat-toolbar class="main-nav">
+              <!-- ***** Logo Start ***** -->
+              <a href="index.html" class="logo">
+                <img src="assets/pictures/swimsuit-webshop-logo-black-transparent.svg" alt="logo">
+              </a>
+              <!-- ***** Logo End ***** -->
+              <!-- ***** Menu Start ***** -->
+              <ul class="nav">
+<!--                <li><a class="active">Home</a></li>-->
+                <li><a routerLink="/products">Products</a></li>
+
+
+                <li *ngIf="!(loggedInUser)"><a routerLink="/login">Login</a></li>
+                <li *ngIf="!(loggedInUser)"><a routerLink="/registration">Registration</a></li>
+
+
+                <li *ngIf="loggedInUser"><a routerLink="/login" (click)="logout()">Logout</a></li>
+                <li *ngIf="loggedInUser" class="logged-in">{{ user?.username }}</li>
+
+
+              </ul>
+              <div class="hamburger-menu-wrapper">
+                <button mat-icon-button class='menu-trigger' (click)="onToggleSidenav(sidenav)">
+                  <mat-icon aria-hidden="false" aria-label="menu-icon" fontIcon="menu"></mat-icon>
+                </button>
+              </div>
+              <!-- ***** Menu End ***** -->
+            </mat-toolbar>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+

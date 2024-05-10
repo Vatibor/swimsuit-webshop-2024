@@ -10,5 +10,10 @@ const firebaseConfig = {
   
 };
 
-Készítette: Varga Attila Tibor
+Angular projekt, localhost-on való futtatáshoz:
+- git clone
+- npm i parancs kiadása a projekt mappájában, függőségek telepítése
+- firebase config változók bemásolás szükséges a sikeres weboldal megjelenítéshez
+
+Kapcsolat: Varga Attila Tibor
 https://www.facebook.com/varga.attila.tibor/
